@@ -42,4 +42,15 @@ public class BookController {
                 .orElse(null);
     }
 
+    @PostMapping
+    public void createNewBook(@RequestBody Book newBook) {
+        boolean isNewBook = books
+                .stream()
+                .noneMatch(b -> b.getTitle().equalsIgnoreCase(newBook.getTitle()));
+        if (isNewBook){
+            books.add(newBook);
+        }
+    }
+
+
 }
