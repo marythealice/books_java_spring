@@ -4,13 +4,17 @@ import lombok.*;
 
 @Data
 public class Book {
-    private  String title;
+    private long id;
+    private String title;
     private String author;
     private String category;
+    private int rating;
 
-    public Book(String title, String author, String category) {
+    public Book(long id, String title, String author, String category, int rating) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.category = category;
+        this.rating = rating;
     }
 }
