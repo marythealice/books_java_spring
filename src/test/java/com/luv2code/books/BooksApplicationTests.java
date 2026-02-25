@@ -1,4 +1,4 @@
-package com.luv2code.books.books;
+package com.luv2code.books;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

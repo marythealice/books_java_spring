@@ -1,6 +1,7 @@
-package com.luv2code.books.books.controller;
+package com.luv2code.books.controller;
 
-import com.luv2code.books.books.entity.Book;
+import com.luv2code.books.entity.Book;
+import com.luv2code.books.request.BookRequest;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -41,13 +42,12 @@ public class BookController {
     }
 
     @PostMapping
-    public void createNewBook(@RequestBody Book newBook) {
-        boolean isNewBook = books
-                .stream()
-                .noneMatch(b -> b.getTitle().equalsIgnoreCase(newBook.getTitle()));
-        if (isNewBook){
-            books.add(newBook);
-        }
+    public void createNewBook(@RequestBody BookRequest bookRequest) {
+
+        long id = books.isEmpty() ? 1 : books.get(books.size() - 1).getId() + 1;
+
+        Book newBook = convertToBook(id, bookRequest);
+        books.add(newBook);
     }
 
     @PutMapping("/{id}")
@@ -64,4 +64,17 @@ public class BookController {
     public void deleteBook(@PathVariable long id) {
         books.removeIf(book -> book.getId() == id);
     }
+
+    private Book convertToBook(long id, BookRequest bookRequest){
+
+        return new Book(
+                id,
+                bookRequest.getTitle(),
+                bookRequest.getAuthor(),
+                bookRequest.getCategory(),
+                bookRequest.getRating()
+        );
+
+    }
+
 }

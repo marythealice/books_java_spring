@@ -1,6 +1,6 @@
-package com.luv2code.books.books.entity;
+package com.luv2code.books.entity;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class Book {

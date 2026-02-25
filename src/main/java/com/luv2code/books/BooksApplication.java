@@ -1,4 +1,4 @@
-package com.luv2code.books.books;
+package com.luv2code.books;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
